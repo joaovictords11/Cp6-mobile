@@ -1,4 +1,5 @@
 import { useIsFocused, useNavigation } from "@react-navigation/native";
+import { MotiView } from "moti";
 import { useCallback, useContext, useEffect, useState } from "react";
 import {
   Image,
@@ -101,28 +102,42 @@ const HomeScreen = () => {
         </View>
 
         <View style={styles.actionsContainer}>
-          <TouchableOpacity
-            style={styles.actionButton}
-            onPress={() => navigation.navigate("Map")}
+          <MotiView
+            style={{ width: "48%" }}
+            from={{ opacity: 0, translateY: 20 }}
+            animate={{ opacity: 1, translateY: 0 }}
+            transition={{ type: "timing", duration: 500 }}
           >
-            <Image
-              source={require("../../assets/map.png")}
-              style={styles.actionIcon}
-            />
-            <Text style={styles.actionText}>{i18n.t("home_action_map")}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.actionButton}
-            onPress={() => navigation.navigate("CheckIn")}
+            <TouchableOpacity
+              style={styles.actionButton}
+              onPress={() => navigation.navigate("Map")}
+            >
+              <Image
+                source={require("../../assets/map.png")}
+                style={styles.actionIcon}
+              />
+              <Text style={styles.actionText}>{i18n.t("home_action_map")}</Text>
+            </TouchableOpacity>
+          </MotiView>
+          <MotiView
+            style={{ width: "48%" }}
+            from={{ opacity: 0, translateY: 20 }}
+            animate={{ opacity: 1, translateY: 0 }}
+            transition={{ type: "timing", duration: 500, delay: 100 }}
           >
-            <Image
-              source={require("../../assets/checkIn.png")}
-              style={styles.actionIcon}
-            />
-            <Text style={styles.actionText}>
-              {i18n.t("home_action_checkin")}
-            </Text>
-          </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.actionButton}
+              onPress={() => navigation.navigate("CheckIn")}
+            >
+              <Image
+                source={require("../../assets/checkIn.png")}
+                style={styles.actionIcon}
+              />
+              <Text style={styles.actionText}>
+                {i18n.t("home_action_checkin")}
+              </Text>
+            </TouchableOpacity>
+          </MotiView>
           <TouchableOpacity
             style={styles.actionButton}
             onPress={() => navigation.navigate("CheckOut")}
@@ -165,7 +180,6 @@ const HomeScreen = () => {
   );
 };
 
-// ... (stylesFactory permanece o mesmo)
 const stylesFactory = (theme) =>
   StyleSheet.create({
     container: {
@@ -234,7 +248,6 @@ const stylesFactory = (theme) =>
       justifyContent: "space-between",
     },
     actionButton: {
-      width: "48%",
       backgroundColor: theme.card,
       borderRadius: 10,
       padding: 15,

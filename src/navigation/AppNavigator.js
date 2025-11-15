@@ -1,4 +1,7 @@
-import { createStackNavigator } from "@react-navigation/stack";
+import {
+  CardStyleInterpolators,
+  createStackNavigator,
+} from "@react-navigation/stack";
 import i18n from "../i18n/i18n";
 import AboutScreen from "../screens/AboutScreen";
 import CheckInScreen from "../screens/CheckInScreen";
@@ -21,12 +24,15 @@ const MainNavigator = () => (
     <Stack.Screen
       name="Map"
       component={MapScreen}
-      options={{ title: i18n.t("map_title") }}
+      options={{
+        title: i18n.t("map_title"),
+        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+      }}
     />
     <Stack.Screen
       name="CheckIn"
       component={CheckInScreen}
-      options={{ title: i18n.t("checkin_title") }}
+      options={{ title: i18n.t("checkin_title"), presentation: "modal" }}
     />
     <Stack.Screen
       name="CheckOut"

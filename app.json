@@ -14,7 +14,10 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.joaovictords11.motoparkmanager"
+      "bundleIdentifier": "com.joaovictords11.motoparkmanager",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "package": "com.joaovictords11.motoparkmanager",
